@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Header -->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Update Info</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Update User Info...</p>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+
+            <br/>
+            <h4 class="mb-3">Billing Information</h4>
+
+            <form method="POST" action="{% url 'update_info' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <hr/>
+
+                <h4 class="mb-3">Shipping Information</h4>
+                {{ shipping_form.as_p }}
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-secondary btn-block">
+                        Update Profile
+                    </button>
+                </div>
+            </form>
+
+            <br/><br/>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

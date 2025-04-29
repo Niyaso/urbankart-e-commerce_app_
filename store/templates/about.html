@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">About Us...</h1>
+            <p class="lead fw-normal text-white-50 mb-0">urban kart...</p>
+        </div>
+    </div>
+</header>
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <p class="about-text">
+                Discover the latest in fashion, electronics, home goods, and more at Urban Kart. 
+                We bring you quality products at unbeatable prices, all in one sleek and user-friendly platform. Shop smart. Live urban.
+
+
+                <!-- [Add rest of your content here] -->
+            </p>
+
+            <div class="text-center mt-5">
+                <a href="{% url 'home' %}" class="btn btn-outline-dark btn-lg">Start Shopping</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
