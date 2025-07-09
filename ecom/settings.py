@@ -37,7 +37,7 @@ MIDDLEWARE = [
 ]
 
 # === URL CONFIG ===
-ROOT_URLCONF = 'urbankart.urls'
+ROOT_URLCONF = 'ecom.urls'
 
 # === TEMPLATES ===
 TEMPLATES = [
@@ -58,7 +58,7 @@ TEMPLATES = [
 ]
 
 # === WSGI ===
-WSGI_APPLICATION = 'urbankart.wsgi.application'
+WSGI_APPLICATION = 'ecom.wsgi.application'
 
 # === DATABASE ===
 DATABASES = {
