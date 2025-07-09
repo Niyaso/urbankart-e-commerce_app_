@@ -1,1 +1,1 @@
-web: gunicorn urbankart.wsgi:application --log-file -
+web: gunicorn ecom.wsgi:application --log-file -
