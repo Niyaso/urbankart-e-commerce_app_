@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: urbankart-ecommerce
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn ecom.wsgi:application --log-file -"
+    runtime: python3
+    pythonVersion: 3.11.5
+    branch: main
+    autoDeploy: true
