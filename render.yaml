@@ -1,18 +1,12 @@
 services:
   - type: web
-    name: urbankart-ecommerce
+    name: urbankart-e-commerce_app_
     env: python
     plan: free
     buildCommand: "pip install -r requirements.txt"
     startCommand: "gunicorn ecom.wsgi:application --log-file -"
+    preDeployCommand: "python manage.py migrate"
     runtime: python3
     pythonVersion: 3.11.5
     branch: main
     autoDeploy: true
-services:
-  - type: web
-    name: urbankart-e-commerce_app_
-    env: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn ecom.wsgi:application --log-file -"
-    preDeployCommand: "python manage.py migrate"
