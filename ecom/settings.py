@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'cart',
     'payment',
     'paypal.standard.ipn',
+    'storages',  # Added for S3 support
 ]
 
 # === MIDDLEWARE ===
@@ -88,6 +89,7 @@ STATICFILES_DIRS = ['static/']
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# === MEDIA (LOCAL FALLBACK) ===
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -97,3 +99,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # === PAYPAL SETTINGS ===
 PAYPAL_TEST = True
 PAYPAL_RECEIVER_EMAIL = 'business@codemytest.com'
+
+# === AWS S3 MEDIA STORAGE ===
+USE_S3 = os.getenv("USE_S3", "TRUE") == "TRUE"
+
+if USE_S3:
+    AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+    AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
+    AWS_S3_REGION_NAME = os.environ.get("AWS_S3_REGION_NAME")
+    AWS_S3_CUSTOM_DOMAIN = os.environ.get("AWS_S3_CUSTOM_DOMAIN", f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com")
+
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
